@@ -14,7 +14,7 @@ public class Generator {
 			"Wendy", "Steffel", "Urbaez", "Yong", "Pattie"};
 	
 	private static Random gen = new Random();
-	private static String[] mails = {"@mail.ru", "@gmail.com", "ukr.net", "@hotline.com", "@telnet.com", "@gov.co.il", "@nesses.com"};
+	private static String[] mails = {"@mail.ru", "@gmail.com", "@ukr.net", "@hotline.com", "@telnet.com", "@gov.co.il", "@nesses.com"};
 
 	
 	private static String[] positionJob = {"manager", "technic", "support", "director"};
