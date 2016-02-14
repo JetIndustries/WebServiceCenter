@@ -351,7 +351,6 @@ public class ReceiptHibernate implements IServiceCenter {
 
 	@Override
 	public boolean updateProduct(Product product) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
