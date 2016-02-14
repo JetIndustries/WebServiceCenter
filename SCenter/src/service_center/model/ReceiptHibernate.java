@@ -358,42 +358,22 @@ public class ReceiptHibernate implements IServiceCenter {
 		
 	@Override
 	public Receipt getReceiptById(int id) {
-		Query query = em.createQuery("SELECT r FROM Receipt r WHERE r.id = ?1");
-		query.setParameter(1, id);
-		List<Receipt> res = query.getResultList();
-		if (res == null || res.size() == 0)
-			return null;
-		return res.get(0);
+		return em.find(Receipt.class, id);
 	}
 
 	@Override
 	public Position getPosition(int id) {
-		Query query = em.createQuery("SELECT p FROM Position p WHERE p.accessLevel = ?1");
-		query.setParameter(1, id);
-		List<Position> res = query.getResultList();
-		if (res == null || res.size() == 0)
-			return null;
-		return res.get(0);
+		return em.find(Position.class, id);
 	}
 
 	@Override
 	public ComplexityRepair get—omplexityRepair(int id) {
-		Query query = em.createQuery("SELECT cr FROM ComplexityRepair cr WHERE cr.id = ?1");
-		query.setParameter(1, id);
-		List<ComplexityRepair> res = query.getResultList();
-		if (res == null || res.size() == 0)
-			return null;
-		return res.get(0);
+		return em.find(ComplexityRepair.class, id);
 	}
 
 	@Override
 	public User getUser(int id) {
-		Query query = em.createQuery("SELECT u FROM User u WHERE u.id = ?1");
-		query.setParameter(1, id);
-		List<User> res = query.getResultList();
-		if (res == null || res.size() == 0)
-			return null;
-		return res.get(0);
+		return em.find(User.class, id);
 	}
 
 	@Override
@@ -408,32 +388,17 @@ public class ReceiptHibernate implements IServiceCenter {
 
 	@Override
 	public Product getProduct(int id) {
-		Query query = em.createQuery("SELECT pr FROM Product pr WHERE pr.id = ?1");
-		query.setParameter(1, id);
-		List<Product> res = query.getResultList();
-		if (res == null || res.size() == 0)
-			return null;
-		return res.get(0);
+		return em.find(Product.class, id);
 	}
 
 	@Override
 	public Shop getShop(int id) {
-		Query query = em.createQuery("SELECT sh FROM Shop sh WHERE sh.id = ?1");
-		query.setParameter(1, id);
-		List<Shop> res = query.getResultList();
-		if (res == null || res.size() == 0)
-			return null;
-		return res.get(0);
+		return em.find(Shop.class, id);
 	}
 
 	@Override
 	public Client getClient(int id) {
-		Query query = em.createQuery("SELECT c FROM Client c WHERE c.id = ?1");
-		query.setParameter(1, id);
-		List<Client> res = query.getResultList();
-		if (res == null || res.size() == 0)
-			return null;
-		return res.get(0);
+		return em.find(Client.class, id);
 	}
 	
 	
