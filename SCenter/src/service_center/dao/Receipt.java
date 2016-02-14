@@ -154,7 +154,7 @@ public class Receipt {
 				+ ", product=" + product + ", defectClient=" + defectClient + ", equipment=" + equipment + ", view="
 				+ view + ", status=" + status + ", defectCorrect=" + defectCorrect + ", authorizedService="
 				+ authorizedService + ", dateTransfer=" + dateTransfer + ", infoTransfer=" + infoTransfer
-				+ ", repiatRepair=" + repiatRepair + "]";
+				/*+ ", repiatRepair=" + repiatRepair */ + "]";
 	}
 
 }

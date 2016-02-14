@@ -336,17 +336,14 @@ public class ReceiptHibernate implements IServiceCenter {
 		receiptEntityUpdate.setUser(receipt.getUser());
 		receiptEntityUpdate.setStatus(receipt.getStatus());
 		receiptEntityUpdate.setDate(this.onCreate());
-
-		em.refresh(receiptEntityUpdate);
-
-		// em.merge(receiptEntityUpdate);
-
-		/*
-		 * User user; String status; String defectCorrect; String
-		 * authorizedService; Date dateTransfer; String infoTransfer; Set
-		 * <RepiatRepair> repiatRepair;
-		 */
-
+		receiptEntityUpdate.setDefectCorrect(receipt.getDefectCorrect());
+		receiptEntityUpdate.setAuthorizedService(receipt.getAuthorizedService());
+		receiptEntityUpdate.setDateTransfer(receipt.getDateTransfer());
+		receiptEntityUpdate.setInfoTransfer(receipt.getInfoTransfer());
+		receiptEntityUpdate.setRepiatRepair(receipt.getRepiatRepair());
+			
+		em.persist(receiptEntityUpdate);
+		this.addHistory(receiptEntityUpdate);
 		return false;
 	}
 
@@ -356,10 +353,90 @@ public class ReceiptHibernate implements IServiceCenter {
 		return false;
 	}
 
+	
+// for generator
+		
 	@Override
 	public Receipt getReceiptById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = em.createQuery("SELECT r FROM Receipt r WHERE r.id = ?1");
+		query.setParameter(1, id);
+		List<Receipt> res = query.getResultList();
+		if (res == null || res.size() == 0)
+			return null;
+		return res.get(0);
 	}
 
+	@Override
+	public Position getPosition(int id) {
+		Query query = em.createQuery("SELECT p FROM Position p WHERE p.accessLevel = ?1");
+		query.setParameter(1, id);
+		List<Position> res = query.getResultList();
+		if (res == null || res.size() == 0)
+			return null;
+		return res.get(0);
+	}
+
+	@Override
+	public ComplexityRepair get—omplexityRepair(int id) {
+		Query query = em.createQuery("SELECT cr FROM ComplexityRepair cr WHERE cr.id = ?1");
+		query.setParameter(1, id);
+		List<ComplexityRepair> res = query.getResultList();
+		if (res == null || res.size() == 0)
+			return null;
+		return res.get(0);
+	}
+
+	@Override
+	public User getUser(int id) {
+		Query query = em.createQuery("SELECT u FROM User u WHERE u.id = ?1");
+		query.setParameter(1, id);
+		List<User> res = query.getResultList();
+		if (res == null || res.size() == 0)
+			return null;
+		return res.get(0);
+	}
+
+	@Override
+	public String getStatus(int id) {
+		Query query = em.createQuery("SELECT st FROM Status st");
+		List<Status> res = query.getResultList();
+		int size =  res.size();
+		if (res == null || size == 0)
+			return null;
+		return (String) res.get(size-1).getStatus().toArray()[id];
+	}
+
+	@Override
+	public Product getProduct(int id) {
+		Query query = em.createQuery("SELECT pr FROM Product pr WHERE pr.id = ?1");
+		query.setParameter(1, id);
+		List<Product> res = query.getResultList();
+		if (res == null || res.size() == 0)
+			return null;
+		return res.get(0);
+	}
+
+	@Override
+	public Shop getShop(int id) {
+		Query query = em.createQuery("SELECT sh FROM Shop sh WHERE sh.id = ?1");
+		query.setParameter(1, id);
+		List<Shop> res = query.getResultList();
+		if (res == null || res.size() == 0)
+			return null;
+		return res.get(0);
+	}
+
+	@Override
+	public Client getClient(int id) {
+		Query query = em.createQuery("SELECT c FROM Client c WHERE c.id = ?1");
+		query.setParameter(1, id);
+		List<Client> res = query.getResultList();
+		if (res == null || res.size() == 0)
+			return null;
+		return res.get(0);
+	}
+	
+	
+
 }
+

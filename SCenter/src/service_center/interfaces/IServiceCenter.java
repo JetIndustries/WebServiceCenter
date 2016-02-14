@@ -18,6 +18,14 @@ public interface IServiceCenter {
 	public boolean updateProduct(Product product);
 	
 	public Iterable<Receipt> getAllReceipt();
+	
 	public Receipt getReceiptById(int id);
+	public Position getPosition(int id); 
+	public ComplexityRepair get—omplexityRepair(int id); 
+	public User getUser(int id); 
+	public String getStatus(int id);
+	public Product getProduct(int id);
+	public Shop getShop(int id); 
+	public Client getClient(int id); 
 
 }

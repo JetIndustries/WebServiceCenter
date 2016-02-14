@@ -61,8 +61,7 @@ public class Appl {
 		
 		controller.addUser(user1);
 		controller.addUser(user2);
-		//controller.addUser(user1);
-								
+										
 		controller.addShop(shop1);
 		controller.addShop(shop2);
 
@@ -105,22 +104,6 @@ public class Appl {
 		receipt2.setStatus((String)st.getStatus().toArray()[0]);
 		controller.addReceipt(receipt2);
 		
-		//receipt2.setStatus((String)st.getStatus().toArray()[5]);
-		//controller.addReceipt(receipt2);
-		
-		RepiatRepair repiatRepair1 = new RepiatRepair();
-		repiatRepair1.setUser(user1);
-		repiatRepair1.setProduct(product1);
-		repiatRepair1.setStatus((String)st.getStatus().toArray()[1]);
-		repiatRepair1.setReceipt(receipt1);
-		//controller.addRepiatRepair(repiatRepair1);
-				
-		receipt1.setStatus((String)st.getStatus().toArray()[7]);
-		System.out.println("receipt1 status new - " + receipt1.getStatus() );
-		System.out.println(receipt1);
-		
-		//controller.updateReceipt(receipt1);
-
 		ctx.close();
 	}
 
