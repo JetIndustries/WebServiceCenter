@@ -55,13 +55,13 @@ public class ReceiptHibernate implements IServiceCenter {
 				em.persist(shEnt);
 			}
 			recEnt.setShop(shEnt);
-			
+
 			User user = receipt.getUser();
 			User userEnt = this.getUser(user.getTelNumber());
 			if (userEnt == null)
 				userEnt = this.createUser(user);
 			recEnt.setUser(userEnt);
-			
+
 			recEnt.setRepiatRepair(receipt.getRepiatRepair());
 			recEnt.setStatus(receipt.getStatus());
 
@@ -157,7 +157,8 @@ public class ReceiptHibernate implements IServiceCenter {
 		User userEntity;
 		userEntity = new User(user.getLogin(), user.getPassword(), user.getfName(), user.getsName(),
 				user.getTelNumber());
-		userEntity.setPosition(user.getPosition());
+		Position pos = this.getPosition(user.getPosition().getAccessLevel());
+		userEntity.setPosition(pos);
 		em.persist(userEntity);
 		return userEntity;
 	}
@@ -289,28 +290,29 @@ public class ReceiptHibernate implements IServiceCenter {
 			repEntity = new RepiatRepair();
 			repEntity.setAuthorizedService(repiatRepair.getAuthorizedService());
 			repEntity.setDefectCorrect(repiatRepair.getDefectCorrect());
-			
+
 			Product product = repiatRepair.getProduct();
 			Product productEnt = this.getProdut(product.getModel(), product.getManufacturer());
 			repEntity.setProduct(productEnt);
-			
+
 			Receipt rec = em.find(Receipt.class, repiatRepair.getReceipt().getId());
 			repEntity.setReceipt(rec);
-			
+
 			User user = this.getUser(repiatRepair.getUser().getTelNumber());
 			repEntity.setUser(user);
-			
+
 			repEntity.setStatus(repiatRepair.getStatus());
 			repEntity.setDate(this.onCreate());
 			repEntity.setDateTransfer(this.onUpdate());
 			repEntity.setInfoTransfer(repiatRepair.getInfoTransfer());
 			em.merge(repEntity);
-			
+
 			this.addHistory(repEntity);
 			return true;
 		}
 		return false;
 	}
+
 	@Transactional
 	private void addHistory(RepiatRepair repEntity) {
 		History historyEntity = new History();
@@ -341,7 +343,7 @@ public class ReceiptHibernate implements IServiceCenter {
 		receiptEntityUpdate.setDateTransfer(receipt.getDateTransfer());
 		receiptEntityUpdate.setInfoTransfer(receipt.getInfoTransfer());
 		receiptEntityUpdate.setRepiatRepair(receipt.getRepiatRepair());
-			
+
 		em.persist(receiptEntityUpdate);
 		this.addHistory(receiptEntityUpdate);
 		return false;
@@ -353,9 +355,8 @@ public class ReceiptHibernate implements IServiceCenter {
 		return false;
 	}
 
-	
-// for generator
-		
+	// for generator
+
 	@Override
 	public Receipt getReceiptById(int id) {
 		return em.find(Receipt.class, id);
@@ -380,10 +381,10 @@ public class ReceiptHibernate implements IServiceCenter {
 	public String getStatus(int id) {
 		Query query = em.createQuery("SELECT st FROM Status st");
 		List<Status> res = query.getResultList();
-		int size =  res.size();
+		int size = res.size();
 		if (res == null || size == 0)
 			return null;
-		return (String) res.get(size-1).getStatus().toArray()[id];
+		return (String) res.get(size - 1).getStatus().toArray()[id];
 	}
 
 	@Override
@@ -400,8 +401,5 @@ public class ReceiptHibernate implements IServiceCenter {
 	public Client getClient(int id) {
 		return em.find(Client.class, id);
 	}
-	
-	
 
 }
-
