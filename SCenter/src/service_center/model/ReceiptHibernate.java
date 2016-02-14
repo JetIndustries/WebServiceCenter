@@ -367,7 +367,7 @@ public class ReceiptHibernate implements IServiceCenter {
 	}
 
 	@Override
-	public ComplexityRepair get—omplexityRepair(int id) {
+	public ComplexityRepair getComplexityRepair(int id) {
 		return em.find(ComplexityRepair.class, id);
 	}
 

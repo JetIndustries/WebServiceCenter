@@ -21,7 +21,7 @@ public interface IServiceCenter {
 	
 	public Receipt getReceiptById(int id);
 	public Position getPosition(int id); 
-	public ComplexityRepair get—omplexityRepair(int id); 
+	public ComplexityRepair getComplexityRepair(int id); 
 	public User getUser(int id); 
 	public String getStatus(int id);
 	public Product getProduct(int id);
