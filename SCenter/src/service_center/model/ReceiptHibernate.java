@@ -13,7 +13,7 @@ public class ReceiptHibernate implements IServiceCenter {
 	@PersistenceContext(unitName = "springHibernate")
 	EntityManager em;
 
-	////////// date
+	///date
 	private Date created;
 	private Date updated;
 
