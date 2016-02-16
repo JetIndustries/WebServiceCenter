@@ -68,6 +68,8 @@ public class GeneratorTables {
 		return res;
 	}
 	
+	// new function
+	
 	public List<User> genUsers(int count) {
 		List<User> res = new LinkedList<User>();
 		for (int i = 0; i < count; i++) {
