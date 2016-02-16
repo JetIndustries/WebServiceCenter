@@ -81,4 +81,4 @@ public class GeneratorTables {
 		return res;
 	}
 }
-// тут что то новенькое будет
+// tut
