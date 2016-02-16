@@ -23,7 +23,7 @@ public class ReceiptHibernate implements IServiceCenter {
 		return created;
 	}
 
-	//////////
+	//////////asd
 	@PreUpdate
 	private Date onUpdate() {
 		updated = new Date();
